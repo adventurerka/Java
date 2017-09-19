@@ -4,18 +4,25 @@ public class Point {
 
   public double p1;
   public double p2;
-  public double p3;
-  public double p4;
 
-  public Point (double p1, double p2, double p3, double p4){
+  public Point(double p1, double p2) {
     this.p1 = p1;
     this.p2 = p2;
-    this.p3 = p3;
-    this.p4 = p4;
   }
 
-  public double distance () {
-    return Math.sqrt(Math.pow((this.p1-this.p3),2)+Math.pow((this.p2-this.p4),2));
+  public double distance(Point other) {
+    double dp1 = other.p1 - this.p1;
+    double dp2 = other.p2 - this.p2;
+    double distance = Math.sqrt(dp1 * dp1 + dp2 * dp2);
+    return distance;
   }
+
+  @Override
+  public String toString() {
+    return "Point{" +
+            "p1=" + p1 +
+            ", p2=" + p2 +
+            '}';
   }
+}
 
