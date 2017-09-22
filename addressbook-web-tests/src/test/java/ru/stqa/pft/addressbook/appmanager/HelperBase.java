@@ -20,7 +20,7 @@ public class HelperBase {
     wd.findElement(locator).sendKeys(text);
   }
 
-  protected void switchTo() {
+  protected void switchToaccept() {
     wd.switchTo().alert().accept();
   }
 

@@ -65,6 +65,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteConformationContacts() {
-    switchTo();
+    switchToaccept();
   }
 }
