@@ -9,6 +9,7 @@ public class ContactHelper extends HelperBase {
   public ContactHelper(FirefoxDriver wd) {
     super(wd);
   }
+
   public void fillContactCreationFrom(ContactData contactData) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("middlename"), contactData.getMiddlename());
@@ -42,8 +43,28 @@ public class ContactHelper extends HelperBase {
     type(By.name("phone2"), contactData.getPhone2());
     type(By.name("notes"), contactData.getNotes());
   }
+
   public void submitContactCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
+  public void submitContactModification() {
+    click(By.name("update"));
+  }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void initContactModification() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void deleteSelectedContacts() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void deleteConformationContacts() {
+    switchTo();
+  }
 }
