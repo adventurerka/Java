@@ -75,4 +75,14 @@ public class ContactHelper extends HelperBase {
   public void deleteConformationContacts() {
     switchToaccept();
   }
+
+  public void createContact(ContactData contact, boolean b) {
+
+    fillContactCreationFrom(contact, b);
+    submitContactCreation();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
