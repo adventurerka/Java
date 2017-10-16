@@ -3,8 +3,12 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -41,7 +45,7 @@ public class ContactHelper extends HelperBase {
       click(By.xpath("//div[@id='content']/form/select[4]//option[2]"));
     }
     type(By.name("ayear"), contactData.getAyear());
-    if (creation){
+    if (creation) {
       new Select(wd.findElement((By.name("new_group")))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -60,8 +64,8 @@ public class ContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void initContactModification() {
@@ -88,5 +92,19 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.contacts"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      ContactData contact = new ContactData(name, null, null, null,
+              null, null, null, null, null, null, null, null,
+              null, null, null, null, null, null, null,
+              null);
+      contacts.add(contact);
+    }
+    return contacts;
   }
 }

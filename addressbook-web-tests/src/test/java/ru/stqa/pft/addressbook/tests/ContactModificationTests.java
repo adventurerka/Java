@@ -4,12 +4,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactModificationTests extends TestBase{
+import java.util.List;
+
+public class ContactModificationTests extends TestBase {
   @Test
   public void testContactCreation() {
     app.getNavigationHelper().gotoHome();
-    int before = app.getContactHelper().getContactCount();
-    if (!app.getContactHelper().isThereAContact()){
+
+    if (!app.getContactHelper().isThereAContact()) {
       app.getNavigationHelper().gotoAddNewPage();
       app.getContactHelper().createContact(new ContactData("Anna", "Anna",
               "Anna", "Anna", "Anna", "news", "Street", "+7777777",
@@ -18,6 +20,7 @@ public class ContactModificationTests extends TestBase{
               "Street", "15", "just note"), true);
       app.getNavigationHelper().gotoHome();
     }
+    List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactCreationFrom(new ContactData("a", "Anna", "Anna",
             "Anna", "Anna", "news", "Street", "+7777777", "+79777777777",
@@ -26,7 +29,8 @@ public class ContactModificationTests extends TestBase{
             "just note"), false);
     app.getContactHelper().submitContactModification();
     app.getNavigationHelper().gotoHome();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before);
+    List<ContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size());
+
   }
 }
