@@ -32,7 +32,7 @@ public class ApplicationManager {
       wd = new InternetExplorerDriver();
     }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get("http://localhost:8080/addressbook/birthdays.php");
+    wd.get("http://localhost:8080/addressbook");
     sessionHelper = new SessionHelper(wd);
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
