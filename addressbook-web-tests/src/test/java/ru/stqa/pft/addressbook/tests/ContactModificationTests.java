@@ -8,7 +8,7 @@ public class ContactModificationTests extends TestBase{
   public void testContactCreation() {
     app.getNavigationHelper().gotoHome();
     app.getContactHelper().initContactModification();
-    app.getContactHelper().fillContactCreationFrom(new ContactData("a", "Anna", "Anna", "Anna", "Anna", "news", "Street", "+7777777", "+79777777777", "+79777777777", "anna@gmail.com", "anna2@gmail.com", "anna3@gmail.com", "anna.com", "1960", "2020", "Street", "15", "just note"));
+    app.getContactHelper().fillContactCreationFrom(new ContactData("a", "Anna", "Anna", "Anna", "Anna", "news", "Street", "+7777777", "+79777777777", "+79777777777", "anna@gmail.com", "anna2@gmail.com", "anna3@gmail.com", "anna.com", "1960", "2020", null, "Street", "15", "just note"), false);
     app.getContactHelper().submitContactModification();
     app.getNavigationHelper().gotoHome();
   }

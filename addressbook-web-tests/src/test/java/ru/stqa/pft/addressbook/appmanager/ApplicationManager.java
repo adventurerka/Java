@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import sun.plugin2.util.BrowserType;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +31,7 @@ public class ApplicationManager {
     } else if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.IE)){
       wd = new InternetExplorerDriver();
     }
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get("http://localhost:8080/addressbook/birthdays.php");
     sessionHelper = new SessionHelper(wd);
     groupHelper = new GroupHelper(wd);
