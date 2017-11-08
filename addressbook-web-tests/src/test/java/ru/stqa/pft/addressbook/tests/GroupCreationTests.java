@@ -1,23 +1,33 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
-  @Test
-  public void testGroupCreation() {
-
-    app.getNavigationHelper().gotoGroupPage();
-    List<GroupData> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().initGroupCreation();
-    app.getGroupHelper().fillGroupForm(new GroupData("test1", null, null));
-    app.getGroupHelper().submitGroupCreation();
-    app.getGroupHelper().returnTOGroupPage();
-    List<GroupData> after = app.getGroupHelper().getGroupList();
-    Assert.assertEquals(after.size(), before.size() + 1);
-  }
+    @Test
+    public void testGroupCreation() {
+        app.goTo().groupPage();
+        Groups before = app.group().all();
+        GroupData group = new GroupData().withName("test2");
+        app.group().create(group);
+        assertThat(app.group().count(), equalTo(before.size()+1));
+        Groups after = app.group().all();
+        assertThat(after, equalTo(before.withAdded(
+                group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+    }
+    @Test
+    public void testBadGroupCreation() {
+        app.goTo().groupPage();
+        Groups before = app.group().all();
+        GroupData group = new GroupData().withName("test2'");
+        app.group().create(group);
+        assertThat(app.group().count(), equalTo(before.size()));
+        Groups after = app.group().all();
+        assertThat(after, equalTo(before));
+    }
 }

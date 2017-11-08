@@ -11,48 +11,48 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
-  WebDriver wd;
+    WebDriver wd;
 
-  private SessionHelper sessionHelper;
-  private NavigationHelper navigationHelper;
-  private GroupHelper groupHelper;
-  private ContactHelper contactHelper;
-  private String browser;
+    private SessionHelper sessionHelper;
+    private NavigationHelper navigationHelper;
+    private GroupHelper groupHelper;
+    private ContactHelper contactHelper;
+    private String browser;
 
-  public ApplicationManager(String browser) {
-    this.browser = browser;
-  }
-
-  public void init() {
-    if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-    } else if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.CHROME)) {
-      wd = new ChromeDriver();
-    } else if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.IE)) {
-      wd = new InternetExplorerDriver();
+    public ApplicationManager(String browser) {
+        this.browser = browser;
     }
-    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get("http://localhost:8080/addressbook");
-    sessionHelper = new SessionHelper(wd);
-    groupHelper = new GroupHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    contactHelper = new ContactHelper(wd);
-    sessionHelper.login("admin", "secret");
-  }
 
-  public void stop() {
-    wd.quit();
-  }
+    public void init() {
+        if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.FIREFOX)) {
+            wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
+        } else if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.CHROME)) {
+            wd = new ChromeDriver();
+        } else if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.IE)) {
+            wd = new InternetExplorerDriver();
+        }
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wd.get("http://localhost:8080/addressbook");
+        sessionHelper = new SessionHelper(wd);
+        groupHelper = new GroupHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
+        contactHelper = new ContactHelper(wd);
+        sessionHelper.login("admin", "secret");
+    }
 
-  public ContactHelper getContactHelper() {
-    return contactHelper;
-  }
+    public void stop() {
+        wd.quit();
+    }
 
-  public GroupHelper getGroupHelper() {
-    return groupHelper;
-  }
+    public ContactHelper contact() {
+        return contactHelper;
+    }
 
-  public NavigationHelper getNavigationHelper() {
-    return navigationHelper;
-  }
+    public GroupHelper group() {
+        return groupHelper;
+    }
+
+    public NavigationHelper goTo() {
+        return navigationHelper;
+    }
 }
