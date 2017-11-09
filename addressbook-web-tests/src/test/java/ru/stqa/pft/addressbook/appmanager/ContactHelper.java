@@ -73,11 +73,6 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
-    public void initContactModification() {
-        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
-
-    }
-
     public void deleteSelectedContacts() {
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     }
@@ -93,7 +88,7 @@ public class ContactHelper extends HelperBase {
         contactCache = null;
     }
     public void modify(ContactData contact) {
-        initContactModification();
+        initContactModificationById(contact.getId());
         fillContactCreationFrom(contact, false);
         submitModification();
         contactCache = null;
@@ -103,8 +98,8 @@ public class ContactHelper extends HelperBase {
         deleteSelectedContacts();
         deleteConformationContacts();
     }
-    public void delete(ContactData group) {
-        selectById(group.getId());
+    public void delete(ContactData contact) {
+        selectById(contact.getId());
         deleteSelectedContacts();
         deleteConformationContacts();
         contactCache = null;
