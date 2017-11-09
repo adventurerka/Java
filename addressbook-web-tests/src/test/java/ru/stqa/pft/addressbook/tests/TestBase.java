@@ -18,41 +18,5 @@ public class TestBase {
     public void tearDown() {
         app.stop();
     }
-/*
-    public LegalEntity withName(String name) {
-        this.name = name;
-        return this;
-    }
-    public LegalEntity withName() {
-        this.name = "имя";
-        return this;
-    }
-    public LegalEntity withOgrn(String ogrn) {
-        this.ogrn = ogrn;
-        return this;
-    }
-    public LegalEntity withOgrn() {
-        this.ogrn = "";
-        return this;
-    }
-    public LegalEntity withInn(String inn) {
-        this.inn = inn;
-        return this;
-    }
 
-    public LegalEntity withKpp(String kpp) {
-        this.kpp = kpp;
-        return this;
-    }
-
-    public LegalEntity withPosition(String position) {
-        this.position = position;
-        return this;
-    }
-
-    public LegalEntity withDivision(String division) {
-        this.division = division;
-        return this;
-    }
-    */
 }
