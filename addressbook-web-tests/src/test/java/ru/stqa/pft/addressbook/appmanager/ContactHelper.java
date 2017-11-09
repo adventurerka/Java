@@ -88,7 +88,7 @@ public class ContactHelper extends HelperBase {
         contactCache = null;
     }
     public void modify(ContactData contact) {
-        initContactModificationById(contact.getId());
+        initModificationById(contact.getId());
         fillContactCreationFrom(contact, false);
         submitModification();
         contactCache = null;
@@ -144,14 +144,14 @@ public class ContactHelper extends HelperBase {
         }
         return new Contacts(contactCache);
     }
-public void initContactModificationById (int id){
+public void initModificationById(int id){
     WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
     WebElement row = checkbox.findElement(By.xpath("./../../."));
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
 }
     public ContactData infoFromEditForm(ContactData contact) {
-        initContactModificationById(contact.getId());
+        initModificationById(contact.getId());
         return null;
     }
 }
