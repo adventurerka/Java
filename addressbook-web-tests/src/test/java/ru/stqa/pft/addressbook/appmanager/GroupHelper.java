@@ -8,9 +8,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
@@ -73,25 +71,29 @@ public class GroupHelper extends HelperBase {
         groupCache = null;
         returnTOGroupPage();
     }
+
     public void modify(GroupData group) {
-       selectGroupById(group.getId());
-       initGroupModification();
-       fillGroupForm(group);
-       submitGroupModification();
+        selectGroupById(group.getId());
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
         groupCache = null;
-       returnTOGroupPage();
+        returnTOGroupPage();
     }
+
     public void delete(int index) {
         selectGroup(index);
         deleteSelectedGroups();
         returnTOGroupPage();
     }
+
     public void delete(GroupData group) {
         selectGroupById(group.getId());
         deleteSelectedGroups();
         groupCache = null;
         returnTOGroupPage();
     }
+
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
@@ -110,10 +112,11 @@ public class GroupHelper extends HelperBase {
         }
         return groups;
     }
+
     private Groups groupCache = null;
 
     public Groups all() {
-        if (groupCache != null){
+        if (groupCache != null) {
             return new Groups(groupCache);
         }
         groupCache = new Groups();

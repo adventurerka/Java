@@ -1,0 +1,46 @@
+<list>
+  <contact>
+    <firstname>Anna 0</firstname>
+    <middlename>Anna 0</middlename>
+    <lastname>Anna 0</lastname>
+    <nickname>Anna 0</nickname>
+    <title>news 0</title>
+    <company>company 0</company>
+    <address>Street 0</address>
+    <home>+7777777 0</home>
+    <mobile>+79777777777 0</mobile>
+    <work>+777772 0</work>
+    <email>anna@gmail.com 0</email>
+    <email2>anna2@gmail.com 0</email2>
+    <email3>anna3@gmail.com 0</email3>
+    <homepage>anna.com 0</homepage>
+    <byear>1960 0</byear>
+    <ayear>2020 0</ayear>
+    <group>test 0</group>
+    <address2>Street 0</address2>
+    <phone2>home 0</phone2>
+    <notes>just note 0</notes>
+  </contact>
+  <contact>
+    <firstname>Anna 1</firstname>
+    <middlename>Anna 1</middlename>
+    <lastname>Anna 1</lastname>
+    <nickname>Anna 1</nickname>
+    <title>news 1</title>
+    <company>company 1</company>
+    <address>Street 1</address>
+    <home>+7777777 1</home>
+    <mobile>+79777777777 1</mobile>
+    <work>+777772 1</work>
+    <email>anna@gmail.com 1</email>
+    <email2>anna2@gmail.com 1</email2>
+    <email3>anna3@gmail.com 1</email3>
+    <homepage>anna.com 1</homepage>
+    <byear>1960 1</byear>
+    <ayear>2020 1</ayear>
+    <group>test 1</group>
+    <address2>Street 1</address2>
+    <phone2>home 1</phone2>
+    <notes>just note 1</notes>
+  </contact>
+</list>
