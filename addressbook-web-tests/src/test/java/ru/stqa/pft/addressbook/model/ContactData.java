@@ -3,66 +3,106 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
     @Expose
+    @Column(name = "firstname")
     private String firstname;
     @Expose
+    @Column(name = "middlename")
     private String middlename;
     @Expose
+    @Column(name = "lastname")
     private String lastname;
     @Expose
+    @Column(name = "nickname")
     private String nickname;
     @Expose
+    @Column(name = "title")
     private String title;
     @Expose
+    @Column(name = "company")
     private String company;
     @Expose
+    @Column(name = "address")
     private String address;
     @Expose
+    @Column(name = "home")
+    @Type (type = "text")
     private String home;
     @Expose
+    @Column(name = "mobile")
+    @Type (type = "text")
     private String mobile;
     @Expose
+    @Column(name = "work")
+    @Type (type = "text")
     private String work;
     @Expose
+    @Column(name = "email")
     private String email;
     @Expose
+    @Column(name = "email2")
     private String email2;
     @Expose
+    @Column(name = "email3")
     private String email3;
     @Expose
+    @Column(name = "homepage")
     private String homepage;
     @Expose
+    @Column(name = "byear")
     private String byear;
     @Expose
+    @Column(name = "ayear")
     private String ayear;
+
     @Expose
+    @Transient
     private String group;
+    //transient private String group;
+
     @Expose
+    @Column(name = "address2")
     private String address2;
     @Expose
+    @Column(name = "phone2")
     private String phone2;
     @Expose
+    @Column(name = "notes")
     private String notes;
+
     @Expose
+    @Transient
     private String allPhones;
+
     @Expose
+    @Transient
     private String allEmails;
-    private File photo;
+
+    @Column(name = "photo")
+    @Type (type = "text")
+    private String photo;
+
     @XStreamOmitField
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
 
 
     public File getPhoto() {
-        return photo;
+        return new File (photo);
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
