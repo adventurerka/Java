@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase {
                     withMobile("+79777777777").withEmail("anna@gmail.com").withEmail2("anna2@gmail.com").
                     withEmail3("anna3@gmail.com").withHomepage("anna.com").withHomePhone("home").withByear("1960").
                     withAyear("2020").withCompany("company").withWorkPhone("work").withAddress2("Street").
-                    withNotes("just note").withGroup("test1")), true);
+                    withNotes("just note")), true);
             app.goTo().home();
         }
     }
@@ -35,7 +35,7 @@ public class ContactModificationTests extends TestBase {
                 withNickname("Anna").withTitle("news").withAddress("Street").withHomePhone2("+7777777").
                 withMobile("+79777777777").withEmail("anna@gmail.com").withEmail2("anna2@gmail.com").
                 withEmail3("anna3@gmail.com").withHomepage("anna.com").withHomePhone("home").withByear("1960").withAyear("2020").
-                withCompany("company").withWorkPhone("work").withAddress2("Street").withNotes("just note").withGroup("test1");
+                withCompany("company").withWorkPhone("work").withAddress2("Street").withNotes("just note");
         app.contact().modify(contact);
         app.goTo().home();
         assertThat(app.contact().count(), equalTo(before.size()));

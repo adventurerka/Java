@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,9 +59,11 @@ public class ContactCreationTests extends TestBase {
     @Test(dataProvider = "validContactsXml")
     public void testContactCreation(ContactData contact) {
         app.goTo().home();
+        Groups groups = app.db().groups();
+        ContactData newContact = contact.inGroup(groups.iterator().next());
         Contacts before = app.db().contacts();
         app.goTo().addNewPage();
-        app.contact().create(contact, true);
+        app.contact().create(newContact, true);
         app.goTo().home();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.db().contacts();
@@ -71,17 +74,17 @@ public class ContactCreationTests extends TestBase {
 
     @Test(enabled = false)
     public void testContactCreationOld() {
-        app.goTo().home();
-        Contacts before = app.contact().all();
+        Groups groups = app.db().groups();
         File photo = new File("src/test/resources/panda.jpg");
-
-        app.goTo().addNewPage();
         ContactData contact = new ContactData().withFirstName("Anna").withLastName("Anna").withMiddleName("Anna").
                 withNickname("Anna").withTitle("news").withAddress("Street").withHomePhone2("home").
                 withMobile("+79777777777").withEmail("anna@gmail.com").withEmail2("anna2@gmail.com").
                 withEmail3("anna3@gmail.com").withHomepage("anna.com").withHomePhone("+7777777").withByear("1960").
                 withAyear("2020").withCompany("company").withWorkPhone("+777772").withAddress2("Street").
-                withNotes("just note").withGroup("test1").withPhoto(photo);
+                withNotes("just note").withPhoto(photo).inGroup(groups.iterator().next());
+        app.goTo().home();
+        Contacts before = app.contact().all();
+        app.goTo().addNewPage();
         app.contact().create(contact, true);
         app.goTo().home();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
