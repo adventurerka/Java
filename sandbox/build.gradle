@@ -3,9 +3,7 @@ apply plugin: 'application'
 mainClassName = "Result"
 
 repositories {
-    maven {
-        mavenCentral ()
-    }
+    mavenCentral()
 }
 
 dependencies {

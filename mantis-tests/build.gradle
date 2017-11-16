@@ -3,12 +3,21 @@ apply plugin: 'java'
 repositories {
 
     mavenCentral()
+    flatDir {
+        dirs 'dir' // инициализируем папку, хранящую jar-архивы как репозиторий
+    }
+
 }
 
 dependencies {
     compile 'org.testng:testng:6.11'
     compile 'org.seleniumhq.selenium:selenium-java:3.5.3'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile name:'commons-net-3.6'
+    compile name:'subethasmtp-3.1.7'
+    compile name: 'mail-1.4'
+    compile name: 'java-verbal-expressions-1.4'
 }
 
 task testGroups(type: Test) {
