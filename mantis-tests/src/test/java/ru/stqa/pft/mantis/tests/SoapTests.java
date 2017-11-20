@@ -1,8 +1,8 @@
-package ru.stqa.pft.tests;
+package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.Test;
-import ru.stqa.pft.model.Issue;
-import ru.stqa.pft.model.Project;
+import ru.stqa.pft.mantis.model.Issue;
+import ru.stqa.pft.mantis.model.Project;
 
 import javax.xml.rpc.ServiceException;
 import java.net.MalformedURLException;

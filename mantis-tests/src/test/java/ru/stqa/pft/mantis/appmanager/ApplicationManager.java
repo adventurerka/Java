@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook.appmanager;
+package ru.stqa.pft.mantis.appmanager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,6 +23,7 @@ public class ApplicationManager {
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
     private SoapHelper soapHelper;
+    private DbHelper dbHelper;
 
 
     public ApplicationManager(String browser) {
@@ -80,7 +81,9 @@ public class ApplicationManager {
         }
         return soapHelper;
     }
-
+    public DbHelper db() {
+        return dbHelper;
+    }
     public WebDriver getDriver() {
         if (wd == null){
             if (Objects.equals(browser, org.openqa.selenium.remote.BrowserType.FIREFOX)) {

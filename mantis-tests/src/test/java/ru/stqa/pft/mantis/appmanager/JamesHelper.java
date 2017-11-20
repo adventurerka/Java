@@ -1,7 +1,7 @@
-package ru.stqa.pft.addressbook.appmanager;
+package ru.stqa.pft.mantis.appmanager;
 
 import org.apache.commons.net.telnet.TelnetClient;
-import ru.stqa.pft.model.MailMessage;
+import ru.stqa.pft.mantis.model.MailMessage;
 
 import javax.mail.*;
 import java.io.IOException;
@@ -34,19 +34,19 @@ public class JamesHelper {
         write("verify"+name);
         String result = readUntil("exist");
         closeTelnetSession();
-        return result.trim().equals("User"+name+" exist");
+        return result.trim().equals("UserData"+name+" exist");
     }
 
     public void createUser(String name, String password){
         initTelnetSession();
         write("adduser "+name+" "+password);
-        String result = readUntil("User "+name+" added");
+        String result = readUntil("UserData "+name+" added");
         closeTelnetSession();
     }
     public void deleteUser(String name, String password){
         initTelnetSession();
         write("deluser "+name);
-        String result = readUntil("User "+name+" deleted");
+        String result = readUntil("UserData "+name+" deleted");
         closeTelnetSession();
     }
 

@@ -27,7 +27,7 @@ public class RestTest {
     }
 
     private int createIssue(Issue newIssues) throws IOException {
-        String json = getExecuter().execute(Request.Post("https://demo.bugify.com/api/issues.json")
+        String json = getExecuter().execute(Request.Post("http://demo.bugify.com/api/issues.json")
                 .bodyForm(new BasicNameValuePair("subject", newIssues.getSubject()),
                           new BasicNameValuePair("description", newIssues.getDescription())))
                 .returnContent().asString();
@@ -37,7 +37,7 @@ public class RestTest {
     }
 
     private Set<Issue> getIssues() throws IOException {
-        String json = getExecuter().execute(Request.Get("https://demo.bugify.com/api/issues.json"))
+        String json = getExecuter().execute(Request.Get("http://demo.bugify.com/api/issues.json"))
                 .returnContent().asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");

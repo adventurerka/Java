@@ -1,8 +1,8 @@
-package ru.stqa.pft.tests;
+package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
-import ru.stqa.pft.model.MailMessage;
+import ru.stqa.pft.mantis.model.MailMessage;
 
 
 
