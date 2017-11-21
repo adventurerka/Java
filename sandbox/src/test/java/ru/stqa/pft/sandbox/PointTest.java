@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class PointTest {
 
-  @Test
+  @Test (enabled = false)
   public void testArea() {
     Point p1 = new Point(0,0);
     Point p2 = new Point(0,4);
