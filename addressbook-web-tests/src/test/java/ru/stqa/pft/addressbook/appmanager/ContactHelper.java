@@ -61,6 +61,32 @@ public class ContactHelper extends HelperBase {
 
     }
 
+    public void addContactToGroup() {
+        selectGroup();
+        submitAddContact();
+    }
+
+    private void selectGroup() {
+        click(By.cssSelector(".right > select:nth-child(2)"));
+    }
+
+    private void submitAddContact() {
+        click(By.name("add"));
+    }
+
+    public void removeContactFromGroup() {
+        selectGroupFromList();
+        removeContact();
+    }
+
+    private void removeContact() {
+        click(By.name("remove"));
+    }
+
+    private void selectGroupFromList() {
+        click(By.xpath("//form[@id='right']/select//option[3]"));
+    }
+
     public void submitCreation() {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }

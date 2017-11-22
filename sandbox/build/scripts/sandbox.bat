@@ -66,7 +66,7 @@ set CMD_LINE_ARGS=%*
 set CLASSPATH=%APP_HOME%\lib\sandbox.jar;%APP_HOME%\lib\testng-6.11.jar;%APP_HOME%\lib\snakeyaml-1.17.jar;%APP_HOME%\lib\jcommander-1.64.jar
 
 @rem Execute sandbox
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %SANDBOX_OPTS%  -classpath "%CLASSPATH%" Hello %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %SANDBOX_OPTS%  -classpath "%CLASSPATH%" Result %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
