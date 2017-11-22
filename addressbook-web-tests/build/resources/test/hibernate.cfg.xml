@@ -17,7 +17,7 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost/addressbook</property>
+        <property name="connection.url">jdbc:mysql://localhost:8080/addressbook</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
 
@@ -34,7 +34,7 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">verify</property>
+        <property name="hbm2ddl.auto">validate</property>
 
         <!-- Names the annotated entity class -->
         <mapping class="ru.stqa.pft.addressbook.model.GroupData"/>
